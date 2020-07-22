@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剑指 Offer 11. 旋转数组的最小数字</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var minArray = function(numbers) {
+        // 二分查找
+        var left = 0;
+        var right = numbers.length - 1;
+        while(left < right){
+            var mid =  (left + (right - left) / 2) >> 0;
+            if(numbers[left] < numbers[right]){
+                right = mid;
+            }else if(numbers[left] > numbers[right]){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return numbers[left];
+
+        // 暴力循环
+        var min = numbers[0];
+        for(var i = 0;i<numbers.length;i++){
+            if(min > numbers[i])min = numbers[i];
+        }
+        return min;
+
+        //数组排序
+        return numbers.sort((a,b)=>a-b)[0];
+    };
+    console.log(minArray([3,4,5,1,2]));
+</script>
+</html>
