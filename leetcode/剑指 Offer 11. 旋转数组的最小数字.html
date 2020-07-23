@@ -35,6 +35,14 @@
         //数组排序
         return numbers.sort((a,b)=>a-b)[0];
     };
-    console.log(minArray([3,4,5,1,2]));
+    //console.log(minArray([3,4,5,1,2]));
+    var A = function(){};
+    A.prototype = {};
+    var a = new A();
+    A.prototype = {};
+    var b = new A();
+    console.log(a instanceof A);
+    console.log(b instanceof A);
+
 </script>
 </html>
