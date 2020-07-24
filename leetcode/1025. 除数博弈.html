@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1025. 除数博弈</title>
+</head>
+<body>
+
+</body>
+<script>
+    var divisorGame = function(N) {
+        // 归纳
+        /*return N%2 == 0;*/
+        
+        //动态规划
+
+        let dp = Array(N + 1).fill(false)
+        dp[1] = false
+        dp[2] = true
+        for (let i = 3; i <= N; i++) {
+            for (let j = 1; j < i; j++) {
+                dp[i] = i % j === 0 && !dp[i - j]
+                break
+            }
+        }
+        return dp[N]
+    };
+    console.log(divisorGame(5));
+</script>
+</html>
