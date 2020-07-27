@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>392. 判断子序列</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var isSubsequence = function(s, t) {
+        // 暴力循环
+        /*
+        var len = 0,count = 0;
+        for(var i = 0;i<s.length;i++){
+            for(len;len<t.length;len++){
+                if(t[len] == s[i] ){
+                    count++;
+                    len = len + 1;
+                    break;
+                }
+            }
+        }
+        return arr.length == s.length;*/
+
+        // 双指针
+        var i = 0,j = 0,n = 0;
+
+        while(i<s.length && j<t.length){
+            if(s[i] == t[j]){
+                i++;
+                n++;
+            }
+            j++;
+        }
+
+        return s.length == n;
+
+    };
+    console.log(isSubsequence('abc','ahbgdc'));
+</script>
+</html>
