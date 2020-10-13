@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈希路由实现原理</title>
+</head>
+<style>
+    ul{
+        width: 300px;
+        list-style: none;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    ul li{
+        width: 45%;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        background: #ccc;
+        text-align: center;
+        margin: 10px 0;
+        cursor: pointer;
+        position: relative;
+        
+    }
+    ul li a{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+    }
+    .route-box{
+        margin: 20px auto;
+        width: 500px;
+        text-align: center;
+    }
+</style>
+<body>
+    <ul>
+        <!-- 定义路由 -->
+        <li><a href="#/home">home</a></li>
+        <li><a href="#/about">about</a></li>
+    </ul>
+    <!-- 渲染路由对应的 UI -->
+    <div class="route-box">
+        <h1>当前显示的路由<span id="routeView"></span></h1>
+    </div>
+    
+</body>
+<script>
+    // 页面加载完不会触发 hashchange，这里主动触发一次 hashchange 事件
+    window.addEventListener('DOMContentLoaded', onLoad)
+    // 监听路由变化
+    window.addEventListener('hashchange', onHashChange)
+
+    // 路由视图
+    var routerView = null
+
+    function onLoad() {
+        routerView = document.querySelector('#routeView')
+        onHashChange()
+    }
+
+    // 路由变化时，根据路由渲染对应 UI
+    function onHashChange() {
+        switch (location.hash) {
+            case '#/home':
+                routerView.innerHTML = 'Home'
+                return
+            case '#/about':
+                routerView.innerHTML = 'About'
+                return
+            default:
+                return
+        }
+    }
+</script>
+
+</html>
